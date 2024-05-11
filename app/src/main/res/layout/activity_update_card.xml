@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/update"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="20dp"
+    tools:context=".UpdateCard">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update Details"
+        android:textColor="@color/black"
+        android:textSize="36sp"
+        android:gravity="center"
+        android:fontFamily="sans-serif"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/create_title"
+        android:layout_width="337dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/custom_edittetext"
+        android:hint="Enter Task"
+        android:padding="15dp"
+        android:textColor="@color/black"
+        android:textColorHint="#BFBBBB" />
+
+    <EditText
+        android:id="@+id/create_priority"
+        android:layout_width="342dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/custom_edittetext"
+        android:hint="Priority"
+        android:padding="15dp"
+        android:textColor="@color/black"
+        android:textColorHint="#BFBBBB" />
+
+    <EditText
+        android:id="@+id/create_description"
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/custom_edittetext"
+        android:hint="Description"
+        android:padding="15dp"
+        android:textColor="@color/black"
+        android:textColorHint="#BFBBBB" />
+
+    <EditText
+        android:id="@+id/create_deadline"
+        android:layout_width="343dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/custom_edittetext"
+        android:hint="DeadLine"
+        android:padding="15dp"
+        android:textColor="@color/black"
+        android:textColorHint="#BFBBBB" />
+
+    <LinearLayout
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="25dp">
+        <Button
+            android:id="@+id/update_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#8d6346"
+            android:text="Update"/>
+
+        <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/delete_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#412e20"
+            android:text="Delete"/>
+    </LinearLayout>
+
+</LinearLayout>
