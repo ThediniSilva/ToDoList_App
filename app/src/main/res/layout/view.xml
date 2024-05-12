@@ -37,7 +37,7 @@
                 android:fontFamily="sans-serif"
                 android:text="Priority - High"
                 android:textColor="@color/white"
-                android:textSize="15sp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/description"
