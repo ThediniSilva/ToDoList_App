@@ -10,6 +10,15 @@
     android:padding="20dp"
     tools:context=".CreateCard">
 
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="91dp"
+        android:layout_height="64dp"
+        android:layout_gravity="left"
+        android:backgroundTint="#F4DBBB"
+        android:foregroundGravity="left"
+        app:srcCompat="@drawable/ic_backbutton" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

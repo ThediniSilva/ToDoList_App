@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.room.Room
 import kotlinx.android.synthetic.main.activity_create_card.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_update_card.*
 import kotlinx.android.synthetic.main.activity_update_card.create_priority
 import kotlinx.android.synthetic.main.activity_update_card.create_title
@@ -72,6 +73,10 @@ class UpdateCard : AppCompatActivity() {
                 myIntent()
             }
 
+        }
+        imageButton2.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 

@@ -6,6 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.room.Room
 import kotlinx.android.synthetic.main.activity_create_card.*
+import kotlinx.android.synthetic.main.activity_create_card.create_deadline
+import kotlinx.android.synthetic.main.activity_create_card.create_description
+import kotlinx.android.synthetic.main.activity_create_card.create_priority
+import kotlinx.android.synthetic.main.activity_create_card.create_title
+import kotlinx.android.synthetic.main.activity_update_card.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -16,6 +21,11 @@ class CreateCard : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_card)
+
+        imageButton3.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
         database = Room.databaseBuilder(
             applicationContext, myDatabase::class.java, "To_Do"
@@ -40,6 +50,8 @@ class CreateCard : AppCompatActivity() {
 
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
+
+
             }
         }
     }

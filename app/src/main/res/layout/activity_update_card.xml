@@ -2,13 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/update"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/update"
+    android:gravity="clip_horizontal|center|left"
     android:orientation="vertical"
-    android:gravity="center"
     android:padding="20dp"
     tools:context=".UpdateCard">
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="60dp"
+        android:layout_height="57dp"
+        android:backgroundTint="#F4DBBB"
+        android:foregroundGravity="left"
+        app:srcCompat="@drawable/ic_backbutton" />
 
     <TextView
         android:layout_width="match_parent"
@@ -65,28 +73,29 @@
         android:textColorHint="#BFBBBB" />
 
     <LinearLayout
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="25dp">
+        android:layout_width="326dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal">
+
         <Button
             android:id="@+id/update_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#8d6346"
-            android:text="Update"/>
+            android:text="Update" />
 
         <View
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
         <Button
             android:id="@+id/delete_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#412e20"
-            android:text="Delete"/>
+            android:text="Delete" />
     </LinearLayout>
 
 </LinearLayout>
