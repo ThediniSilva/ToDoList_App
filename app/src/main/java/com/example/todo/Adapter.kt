@@ -24,10 +24,31 @@ class Adapter(var data: List<CardInfo>) : RecyclerView.Adapter<Adapter.viewHolde
     }
 
     override fun onBindViewHolder(holder: viewHolder, position: Int) {
+//        when (data[position].priority.toLowerCase()) {
+//            "high" -> holder.layout.setBackgroundColor(Color.parseColor("#F05454"))
+//            "low" -> holder.layout.setBackgroundColor(Color.parseColor("#EDC988"))
+//            else -> holder.layout.setBackgroundColor(Color.parseColor("#00917C"))
+//        }
+        // Set text color of priority TextView based on priority
+//        when (data[position].priority.toLowerCase()) {
+//            "high" -> holder.priority.setTextColor(Color.parseColor("#FF0000")) // Red color for high priority
+//            "low" -> holder.priority.setTextColor(Color.parseColor("#00FF00")) // Green color for medium priority
+//            else -> holder.priority.setTextColor(Color.parseColor("#000000")) // Black color for low priority
+//        }
+        // Set text color of priority TextView based on priority
         when (data[position].priority.toLowerCase()) {
-            "high" -> holder.layout.setBackgroundColor(Color.parseColor("#F05454"))
-            "medium" -> holder.layout.setBackgroundColor(Color.parseColor("#EDC988"))
-            else -> holder.layout.setBackgroundColor(Color.parseColor("#00917C"))
+            "high" -> {
+                holder.priority.setTextColor(Color.parseColor("#FF0000")) // Red color for high priority
+                holder.priority.text = "\u2022 ${data[position].priority}" // Add bullet point before priority text
+            }
+            "low" -> {
+                holder.priority.setTextColor(Color.parseColor("#00FF00")) // Green color for medium priority
+                holder.priority.text = "\u2022 ${data[position].priority}" // Add bullet point before priority text
+            }
+            else -> {
+                holder.priority.setTextColor(Color.parseColor("#000000")) // Black color for low priority
+                holder.priority.text = data[position].priority
+            }
         }
 
         holder.title.text = data[position].title
