@@ -9,15 +9,16 @@
     android:gravity="center"
     android:padding="20dp"
     tools:context=".CreateCard">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enter Details"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:text="Add your task"
         android:textColor="@color/black"
         android:textSize="36sp"
-        android:gravity="center"
-        android:fontFamily="sans-serif"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
     <EditText
         android:id="@+id/create_title"
         android:layout_width="match_parent"
