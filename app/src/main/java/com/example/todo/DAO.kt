@@ -1,7 +1,7 @@
 package com.example.todo
 
 import androidx.room.*
-
+//Data Access Object
 @Dao
 interface DAO {
     @Insert
