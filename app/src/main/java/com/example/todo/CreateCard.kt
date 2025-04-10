@@ -32,28 +32,27 @@ class CreateCard : AppCompatActivity() {
         ).build()
 
         save_button.setOnClickListener {
-            if (create_title.text.toString().trim { it <= ' ' }.isNotEmpty()
-                && create_priority.text.toString().trim { it <= ' ' }.isNotEmpty()
-                && create_description.text.toString().trim { it <= ' ' }.isNotEmpty()
-                && create_deadline.text.toString().trim { it <= ' ' }.isNotEmpty()
+            if (create_title.text.toString().trim().isNotEmpty() &&
+                create_priority.text.toString().trim().isNotEmpty() &&
+                create_description.text.toString().trim().isNotEmpty() &&
+                create_deadline.text.toString().trim().isNotEmpty()
             ) {
-                var title = create_title.getText().toString()
-                var priority = create_priority.getText().toString()
-                var description = create_description.getText().toString()
-                var deadline = create_deadline.getText().toString()
+                val title = create_title.text.toString()
+                val priority = create_priority.text.toString()
+                val description = create_description.text.toString()
+                val deadline = create_deadline.text.toString()
 
-                DataObject.setData(title, priority,description, deadline)
                 GlobalScope.launch {
-                    database.dao().insertTask(Entity(0, title, priority, description, deadline))
-
+                    val newId =
+                        database.dao().insertTask(Entity(0, title, priority, description, deadline))
+                            .toInt()
+                    DataObject.setData(newId, title, priority, description, deadline)
                 }
 
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
-
-
             }
         }
+
     }
 }
-

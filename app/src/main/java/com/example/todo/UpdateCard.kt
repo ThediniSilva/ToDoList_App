@@ -1,17 +1,10 @@
-
 package com.example.todo
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.room.Room
-import kotlinx.android.synthetic.main.activity_create_card.*
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_update_card.*
-import kotlinx.android.synthetic.main.activity_update_card.create_priority
-import kotlinx.android.synthetic.main.activity_update_card.create_title
-import kotlinx.android.synthetic.main.activity_update_card.create_description
-import kotlinx.android.synthetic.main.activity_update_card.create_deadline
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -20,69 +13,58 @@ class UpdateCard : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update_card)
+
         database = Room.databaseBuilder(
             applicationContext, myDatabase::class.java, "To_Do"
         ).build()
+
         val pos = intent.getIntExtra("id", -1)
         if (pos != -1) {
-            val title = DataObject.getData(pos).title
-            val priority = DataObject.getData(pos).priority
-            val description = DataObject.getData(pos).description
-            val deadline = DataObject.getData(pos).deadline
+            var task = DataObject.getData(pos)
 
-            create_title.setText(title)
-            create_priority.setText(priority)
-            create_description.setText(description)
-            create_deadline.setText(deadline)
+            // Pre-fill form with task details
+            create_title.setText(task.title)
+            create_priority.setText(task.priority)
+            create_description.setText(task.description)
+            create_deadline.setText(task.deadline)
+
+            task = DataObject.getData(pos)
+            val taskId = task.id
 
             delete_button.setOnClickListener {
                 DataObject.deleteData(pos)
                 GlobalScope.launch {
                     database.dao().deleteTask(
-                        Entity(
-                            pos + 1,
-                            create_title.text.toString(),
-                            create_priority.text.toString(),
-                            create_description.text.toString(),
-                            create_deadline.text.toString()
-                        )
+                        Entity(taskId, task.title, task.priority, task.description, task.deadline)
                     )
                 }
-                myIntent()
+                navigateToMainActivity()
             }
 
             update_button.setOnClickListener {
-                DataObject.updateData(
-                    pos,
-                    create_title.text.toString(),
-                    create_priority.text.toString(),
-                    create_description.text.toString(),
-                    create_deadline.text.toString()
+                val updatedTitle = create_title.text.toString()
+                val updatedPriority = create_priority.text.toString()
+                val updatedDescription = create_description.text.toString()
+                val updatedDeadline = create_deadline.text.toString()
 
-                )
+                DataObject.updateData(pos, taskId, updatedTitle, updatedPriority, updatedDescription, updatedDeadline)
                 GlobalScope.launch {
                     database.dao().updateTask(
-                        Entity(
-                            pos + 1,
-                            create_title.text.toString(),
-                            create_priority.text.toString(),
-                            create_description.text.toString(),
-                            create_deadline.text.toString()
-                        )
+                        Entity(taskId, updatedTitle, updatedPriority, updatedDescription, updatedDeadline)
                     )
                 }
-                myIntent()
+                navigateToMainActivity()
             }
 
         }
+
+        // Navigate back to MainActivity
         imageButton2.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            navigateToMainActivity()
         }
     }
 
-
-    fun myIntent() {
+    private fun navigateToMainActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
